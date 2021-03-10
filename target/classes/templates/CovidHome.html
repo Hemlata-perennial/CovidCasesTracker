@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Corona Tracker</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body>
+<center>
+    <div class="container">
+        <h1>Coronavirus Tracker Application</h1>
+        <p>This application lists the current number of cases reported across the globe</p>
+
+</center>
+<div class="jumbotron" >
+    <h1 class="display-4" th:text="${total}" ></h1>
+    <p class="lead">Total cases reported as of today</p>
+    <hr class="my-4">
+
+
+    <div class="card" style="width: 30rem; height: 15rem; background-color: burlywood;">
+        <div class="card-body" style="height: 70; background-color:burlywood; ">
+            <p>
+                <span>Recovered Cases:</span>
+                <span th:text="${recovered}"></span>
+                <br>
+
+                <span>Deaths:</span>
+                <span th:text="${deaths}"></span>
+                <br>
+                <span>Active Cases:</span>
+                <span th:text="${active}"></span>
+            </p>
+
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="table">
+        <table class="table">
+            <tr>
+                <th>State</th>
+                <th>Country</th>
+                <th>Confirmed Cases</th>
+                <th>Recovered cases</th>
+                <th>Death</th>
+                <th>Active cases</th>
+
+            </tr>
+            <tr th:each="cntry: ${cntryData}">
+                <td th:text="${cntry.province}"></td>
+                <td th:text="${cntry.country}"></td>
+                <td th:text="${cntry.confirmed}">0</td>
+                <td th:text="${cntry.deaths}">0</td>
+                <td th:text="${cntry.recovered}">0</td>
+                <td th:text="${cntry.confirmed}-${cntry.recovered}-${cntry.deaths}">0</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</div>
+</html>
